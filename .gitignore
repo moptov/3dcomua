@@ -1,0 +1,24 @@
+# Temporary files and logs
+.DS_Store
+_tmp
+_logs
+nohup.out
+composer.lock
+/out
+nbproject
+
+# Configs
+/def.php
+/def2.php
+
+# Other
+/bright
+/imports
+/uploads
+/cache
+workerman.log
+.test
+config.app.bps.js
+config.app.nj.js
+config.app.ny.js
+config.app.txcee.js
