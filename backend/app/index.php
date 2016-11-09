@@ -8,7 +8,7 @@ if (!($login = br()->auth()->getLogin())) {
         br()->renderer()->display('login.html');
       })
       ->route('/', function() {
-        br()->response()->redirect('login.html', true);
+        br()->response()->redirect('index.html', true);
       })
   ;
 

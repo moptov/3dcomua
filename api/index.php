@@ -19,10 +19,17 @@ spl_autoload_register('dataSourcesLoader');
 $rest = new BrRESTBinder();
 $rest
   ->route(new BrRESTUsersBinder(new BrDataSourceUsers()))
-  ->route( '/api/some'
-         , 'SomeDataSource'
+  ->route( '/api/mainContent'
+         , 'ContentDataSource'
          , array( 'security'       => 'login'
                 , 'allowEmptyFilter' => true
+                , 'filterMappings'   => array( array( 'get'  => 'id'
+                                                    , 'fields' => 'id'
+                                                    )
+                                             , array( 'get'  => 'alias'
+                                                    , 'fields' => 'alias'
+                                                    )
+                                             )
                 )
          )
 ;
