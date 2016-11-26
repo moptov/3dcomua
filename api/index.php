@@ -21,8 +21,7 @@ $rest
   ->route(new BrRESTUsersBinder(new BrDataSourceUsers()))
   ->route( '/api/mainContent'
          , 'ContentDataSource'
-         , array( 'security'       => 'login'
-                , 'allowEmptyFilter' => true
+         , array( 'allowEmptyFilter' => true
                 , 'filterMappings'   => array( array( 'get'  => 'id'
                                                     , 'fields' => 'id'
                                                     )
