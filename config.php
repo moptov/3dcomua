@@ -10,8 +10,12 @@ require_once($dbConfig);
 
 br()->config()->set('site-name', 'Another one great site');
 
-br()->auth()->setAttr('usersTable.name', 'user');
+br()->auth()->setAttr('usersTable.name', '3d_users');
+br()->auth()->setAttr('usersTable.loginField', 'email');
+br()->auth()->setAttr('usersTable.passwordField', 'paswd');
 br()->auth()->setAttr('usersAPI.select', 'anyone login');
 br()->auth()->setAttr('usersAPI.insert', 'anyone');
 br()->auth()->setAttr('usersAPI.remove', 'anyone');
 br()->auth()->setAttr('usersAPI.update', 'anyone');
+
+br()->config()->set('Logger/File/Active', true);

@@ -92,19 +92,34 @@
                           <div class="drop-bot"></div>
                         </div>
                       </li>
-                      <li class="item138 parent root grouped-parent" ><a class="daddy item bullet icon main-nav vkhod-v-kabinet" href="javascript:;"  >
+                      <li class="item138 parent root grouped-parent" ><a class="daddy item bullet icon [[^login.id]]main-nav[[/login.id]] vkhod-v-kabinet" href="[[^login.id]]javascript:;[[/login.id]][[#login.id]]kabinet[[/login.id]]"  >
                         <!-- <span><i class="icon-suitcase"></i> Вход в кабинет<span class="daddyicon"></span></span></a> -->
-                        <span><i class="icon-suitcase"></i> Кабинет<span class="daddyicon"></span></span></a>
+                        <span><i class="icon-suitcase"></i> [[^login.id]]Вход в кабинет[[/login.id]][[#login.id]]Кабинет[[/login.id]]<span class="daddyicon"></span></span></a>
                           <div class="fusion-submenu-wrapper level2 " style="width:180px;">
                             <ul class="level2" style="width:180px;">
                               <li class="item123" ><a class="orphan item bullet icon" href="ftp://92.244.100.90/"  >
                                 <span><i class="icon-cloud-download"></i> Вход на FTP Киев</span></a>
                               </li>
+                              [[#login.id]]
                               <li class="divider item124" >
                               </li>
-                              <li class="item125" ><a class="orphan item bullet icon" href="javascript:;"  >
+                              [[#login.isPower]]
+                              <li class="item125" ><a class="orphan item bullet icon" href="users"  >
+                                <span><i class="icon-user"></i> Пользователи</span></a>
+                              </li>
+                              [[#login.isSuperAdmin]]
+                              <li class="item125" ><a class="orphan item bullet icon" href="kontent"  >
+                                <span><i class="icon-book"></i> Контент</span></a>
+                              </li>
+                              <li class="item125" ><a class="orphan item bullet icon" href="city"  >
+                                <span><i class="icon-home"></i> Города</span></a>
+                              </li>
+                              [[/login.isSuperAdmin]]
+                              [[/login.isPower]]
+                              <li class="item125" ><a class="orphan item bullet icon" href="logout"  >
                                 <span><i class="icon-power-off"></i> Выход из кабинета</span></a>
                               </li>
+                              [[/login.id]]
                             </ul>
                            <div class="drop-bot"></div>
                           </div>

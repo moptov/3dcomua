@@ -31,4 +31,17 @@ $rest
                                              )
                 )
          )
+  ->route( '/api/filesOfPerson'
+         , 'FilesDataSource'
+         , array( 'security'         => 'login'
+                , 'allowEmptyFilter' => true
+                , 'filterMappings'   => array( array( 'get'  => 'id'
+                                                    , 'fields' => 'id'
+                                                    )
+                                             , array( 'get'  => 'user_id'
+                                                    , 'fields' => 'user_id'
+                                                    )
+                                             )
+                )
+         )
 ;

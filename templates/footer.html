@@ -10,9 +10,17 @@
   <script src="{br}3rdparty/handlebars/js/handlebars.min.js"></script>
   <script src="{br}3rdparty/gritter/js/jquery.gritter.min.js"></script>
   <script src="{br}js/bright.min.js"></script>
+
   <script src="{/}js/menu.js"></script>
   <script src="{/}js/popup.js"></script>
-  <!-- <script src="{/}js/index.js"></script> -->
+{:/kabinet}
+  <script src="{br}js/br.dataGrid.js"></script>
+  <script src="{br}js/br.dataEditor.js"></script>
+  <script src="{br}js/br.dataBrowser.js"></script>
+  <script src="{br}js/br.dataCombo.js"></script>
+  <script src="{/}js/kabinet.js"></script>
+{:}
+
 {:/index.html}
 {:}
 
@@ -25,15 +33,19 @@
 
       <div id="cd-login"> <!-- log in form -->
         <form class="cd-form">
+          <p class="fieldset main-error" style="display: none;">
+            <span class="main-error-message">Не корректный адрес почты!</span>
+          </p>
+
           <p class="fieldset">
             <label class="image-replace cd-email" for="signin-email">E-mail</label>
-            <input class="full-width has-padding has-border" id="signin-email" type="email" placeholder="E-mail">
-            <span class="cd-error-message">Error message here!</span>
+            <input class="full-width has-padding has-border login-field" id="signin-email" name="email" type="email" placeholder="E-mail">
+            <span class="cd-error-message">Не корректный адрес почты!</span>
           </p>
 
           <p class="fieldset">
             <label class="image-replace cd-password" for="signin-password">Password</label>
-            <input class="full-width has-padding has-border" id="signin-password" type="password"  placeholder="Password">
+            <input class="full-width has-padding has-border login-field" id="signin-password" name="paswd" type="password"  placeholder="Пароль">
             <span class="cd-error-message">Error message here!</span>
           </p>
 
@@ -53,6 +65,11 @@
 
       <div id="cd-signup"> <!-- sign up form -->
         <form class="cd-form">
+          <p class="fieldset">
+            <label class="image-replace cd-username" for="signup-username">Username</label>
+            <input class="full-width has-padding has-border" id="signup-username" type="text" placeholder="Username">
+            <span class="cd-error-message">Error message here!</span>
+          </p>
           <p class="fieldset">
             <label class="image-replace cd-username" for="signup-username">Username</label>
             <input class="full-width has-padding has-border" id="signup-username" type="text" placeholder="Username">
@@ -86,7 +103,7 @@
       </div> <!-- cd-signup -->
 
       <div id="cd-reset-password"> <!-- reset password form -->
-        <p class="cd-form-message">Lost your password? Please enter your email address. You will receive a link to create a new password.</p>
+        <p class="cd-form-message">Забыли свой пароль? Пожалуйста введите адрес вашей эл.почты и щелкните на кнопку "Сбросить пароль". Новый пароль будет выслан вам на почту.</p>
 
         <form class="cd-form">
           <p class="fieldset">
@@ -96,11 +113,11 @@
           </p>
 
           <p class="fieldset">
-            <input class="full-width has-padding" type="submit" value="Reset password">
+            <input class="full-width has-padding" type="submit" value="Сбросить пароль">
           </p>
         </form>
 
-        <p class="cd-form-bottom-message"><a href="#0">Back to log-in</a></p>
+        <p class="cd-form-bottom-message"><a href="#0">Вернуться назад</a></p>
       </div> <!-- cd-reset-password -->
       <a href="#0" class="cd-close-form">Close</a>
     </div> <!-- cd-user-modal-container -->

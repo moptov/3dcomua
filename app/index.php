@@ -2,12 +2,13 @@
 
 br()
   ->request()
-    ->route('/about.html', function() {
-      br()->renderer()->display('about.html');
+    ->route('/logout', function() {
+      br()->auth()->clearLogin();
+      br()->response()->redirect('home');
     })
-    ->route('/vkhod-v-kabinet', function() {
-      br()->config()->set('page-title', 'Вход в кабинет');
-      br()->renderer()->display('vkhod-v-kabinet.html');
+    ->route('/kabinet', function() {
+      br()->config()->set('page-title', 'Кабинет');
+      br()->renderer()->display('kabinet.html');
     })
     ->route('/kontakty', function() {
       br()->config()->set('page-title', 'Адреса 3D центров');

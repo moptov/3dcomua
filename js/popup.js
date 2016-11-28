@@ -83,7 +83,31 @@ jQuery(document).ready(function($){
 	//REMOVE THIS - it's just to show error messages 
 	$form_login.find('input[type="submit"]').on('click', function(event){
 		event.preventDefault();
-		br.log('aaaa');
+	    var data = {};
+
+	    $form_login.find('input.login-field,select.login-field').each(function() {
+	      data[$(this).attr('name')] = $(this).val();
+	    });
+		// br.log(data);
+
+		var users = br.dataSource(br.baseUrl + 'api/users/');
+
+	    users.invoke( 'login'
+	                , data
+	                , function(result, response) {
+	                    if (result) {
+    						$form_modal.removeClass('is-visible');
+							// document.location.reload();
+	                      var href = br.baseUrl + 'kabinet';
+	                      document.location = href;                      
+	                    } else {
+	                      $('span.main-error-message').html('Неверный адрес эл.почты или пароль')
+	                      $('.main-error').show();
+	                    }
+	                  }
+	                );
+
+
 		// $form_login.find('input[type="email"]').toggleClass('has-error').next('span').toggleClass('is-visible');
 	});
 	$form_signup.find('input[type="submit"]').on('click', function(event){
