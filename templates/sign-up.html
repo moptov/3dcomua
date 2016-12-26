@@ -1,0 +1,154 @@
+{@head.html}
+
+{@navigation.html}
+
+
+    <div class="container" style="padding-top:50px;">
+
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Вход в кабинет
+                </h1>
+            </div>
+        </div>
+
+        <!-- Features Section -->
+        <div class="row">
+            <div class="col-md-12">
+
+
+<div class="container">
+      <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <div class="panel panel-login">
+          <div class="panel-heading">
+            <div class="row">
+              <div class="col-xs-6">
+                <a href="#" class="active" id="login-form-link">Вход</a>
+              </div>
+              <div class="col-xs-6">
+                <a href="#" id="register-form-link">Регистрация</a>
+              </div>
+            </div>
+            <hr>
+          </div>
+          <div class="panel-body">
+            <div class="row">
+              <div class="col-lg-12">
+                <form id="login-form" style="display: block;">
+                  <div class="form-group main-error text-center" style="display: none;">
+                      <p><span class="main-error-message"></span></p>
+                  </div>
+                  <div class="form-group">
+                    <input type="email" name="email" id="email" tabindex="1" class="form-control login-field" placeholder="E-mail" value="">
+                  </div>
+                  <div class="form-group">
+                    <input type="password" name="paswd" id="password" tabindex="2" class="form-control login-field" placeholder="Пароль">
+                  </div>
+                  <div class="form-group text-center">
+                    <input type="checkbox" tabindex="3" class="" name="remember" id="remember">
+                    <label for="remember"> Запомнить меня</label>
+                  </div>
+                  <div class="form-group">
+                    <div class="row">
+                      <div class="col-sm-6 col-sm-offset-3">
+                        <input type="submit" name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-login" value="Войти">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="row">
+                      <div class="col-lg-12">
+                        <div class="text-center">
+                          <a href="#" id="remember-form-link" tabindex="5" class="forgot-password">Забыли свой пароль?</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+
+                <form id="remember-form" role="form" style="display: none;">
+                  <div class="form-group text-center">
+                    <label> Забыли свой пароль? Пожалуйста введите адрес вашей эл.почты и щелкните на кнопку "Сбросить пароль". Новый пароль будет выслан вам на почту.</label>
+                  </div>
+                  <div class="form-group">
+                    <input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="E-mail" value="">
+                  </div>
+                  <div class="form-group">
+                    <div class="row">
+                      <div class="col-sm-6 col-sm-offset-3">
+                        <input type="submit" name="remember-submit" id="remember-submit" tabindex="4" class="form-control btn btn-remember" value="Сбросить пароль">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="row">
+                      <div class="col-lg-12">
+                        <div class="text-center">
+                          <a href="#" id="back-to-login-form-link" tabindex="5" class="forgot-password">Вернуться назад</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+
+                <form id="register-form" action="http://phpoll.com/register/process" method="post" role="form" style="display: none;">
+                    <div class="form-group">
+                        <select class="form-control input-lg input-block" id="city" name="city" size="1">
+                            <option value="1">Харьков</option>
+                            <option value="2">Киев</option>
+                            <option value="3">Львов</option>
+                            <option value="4">Одесса</option>
+                            <option value="5">Полтава</option>
+                            <option value="6">Сумы</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <select class="form-control input-lg input-block" id="type" name="type" size="1">
+                            <option value="1">Врач</option>
+                            <option value="2">Клиника</option>
+                        </select>
+                    </div>
+
+                  <div class="form-group">
+                    <input type="text" name="username" id="username" tabindex="1" class="form-control input-normal" placeholder="ФИО" value="">
+                  </div>
+                  <div class="form-group">
+                    <input type="email" name="email" id="email" tabindex="1" class="form-control" placeholder="E-mail" value="">
+                  </div>
+
+                  <div class="form-group">
+                    <input type="text" name="phone" id="phone" tabindex="1" class="form-control" placeholder="Телефон" value="">
+                  </div>
+
+                  <div class="form-group">
+                    <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Пароль">
+                  </div>
+                  <div class="form-group">
+                    <input type="password" name="confirm-password" id="confirm-password" tabindex="2" class="form-control" placeholder="Подтверждение Пароля">
+                  </div>
+                  <div class="form-group">
+                    <div class="row">
+                      <div class="col-sm-6 col-sm-offset-3">
+                        <input type="submit" name="register-submit" id="register-submit" tabindex="4" class="form-control btn btn-register" value="Зарегистрироваться">
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+ 
+
+    </div>
+  </div>
+</div>
+
+{@footer.html}

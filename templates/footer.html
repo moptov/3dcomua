@@ -1,3 +1,8 @@
+        <div class="row">
+            <div class="col-lg-12">
+                <br/>
+            </div>
+        </div>
 
 
   <!--[if lt IE 8]>
@@ -9,10 +14,21 @@
   <script src="{br}3rdparty/bootstrap3/js/bootstrap.min.js"></script>
   <script src="{br}3rdparty/handlebars/js/handlebars.min.js"></script>
   <script src="{br}3rdparty/gritter/js/jquery.gritter.min.js"></script>
-  <script src="{br}js/bright.min.js"></script>
+  <script src="{br}js/bright.js"></script>
+
+  <!-- Custom -->
+  <script src="{/}js/custom.js"></script>
+
+  <!-- Script to Activate the Carousel -->
+  <script>
+  $('.carousel').carousel({
+      interval: 500000 //changes the speed
+  });
+  </script>
 
   <script src="{/}js/menu.js"></script>
-  <script src="{/}js/popup.js"></script>
+  <!-- <script src="{/}js/popup.js"></script> -->
+
 {:/kabinet}
   <script src="{br}js/br.dataGrid.js"></script>
   <script src="{br}js/br.dataEditor.js"></script>
@@ -21,111 +37,14 @@
   <script src="{/}js/kabinet.js"></script>
 {:}
 
-{:/index.html}
+{:/users}
+  <script src="{br}js/br.dataGrid.js"></script>
+  <script src="{br}js/br.dataEditor.js"></script>
+  <script src="{br}js/br.dataBrowser.js"></script>
+  <script src="{br}js/br.dataCombo.js"></script>
+  <script src="{/}js/users.js"></script>
 {:}
 
-  <div class="cd-user-modal"> <!-- this is the entire modal form, including the background -->
-    <div class="cd-user-modal-container"> <!-- this is the container wrapper -->
-      <ul class="cd-switcher">
-        <li><a href="#0">Вход</a></li>
-        <li><a href="#0">Регистрация</a></li>
-      </ul>
-
-      <div id="cd-login"> <!-- log in form -->
-        <form class="cd-form">
-          <p class="fieldset main-error" style="display: none;">
-            <span class="main-error-message">Не корректный адрес почты!</span>
-          </p>
-
-          <p class="fieldset">
-            <label class="image-replace cd-email" for="signin-email">E-mail</label>
-            <input class="full-width has-padding has-border login-field" id="signin-email" name="email" type="email" placeholder="E-mail">
-            <span class="cd-error-message">Не корректный адрес почты!</span>
-          </p>
-
-          <p class="fieldset">
-            <label class="image-replace cd-password" for="signin-password">Password</label>
-            <input class="full-width has-padding has-border login-field" id="signin-password" name="paswd" type="password"  placeholder="Пароль">
-            <span class="cd-error-message">Error message here!</span>
-          </p>
-
-          <p class="fieldset">
-            <input type="checkbox" id="remember-me" checked>
-            <label for="remember-me">Запомнить меня</label>
-          </p>
-
-          <p class="fieldset">
-            <input class="full-width" type="submit" value="Войти">
-          </p>
-        </form>
-        
-        <p class="cd-form-bottom-message"><a href="#0">Забыли свой пароль?</a></p>
-        <!-- <a href="#0" class="cd-close-form">Close</a> -->
-      </div> <!-- cd-login -->
-
-      <div id="cd-signup"> <!-- sign up form -->
-        <form class="cd-form">
-          <p class="fieldset">
-            <label class="image-replace cd-username" for="signup-username">Username</label>
-            <input class="full-width has-padding has-border" id="signup-username" type="text" placeholder="Username">
-            <span class="cd-error-message">Error message here!</span>
-          </p>
-          <p class="fieldset">
-            <label class="image-replace cd-username" for="signup-username">Username</label>
-            <input class="full-width has-padding has-border" id="signup-username" type="text" placeholder="Username">
-            <span class="cd-error-message">Error message here!</span>
-          </p>
-
-          <p class="fieldset">
-            <label class="image-replace cd-email" for="signup-email">E-mail</label>
-            <input class="full-width has-padding has-border" id="signup-email" type="email" placeholder="E-mail">
-            <span class="cd-error-message">Error message here!</span>
-          </p>
-
-          <p class="fieldset">
-            <label class="image-replace cd-password" for="signup-password">Password</label>
-            <input class="full-width has-padding has-border" id="signup-password" type="text"  placeholder="Password">
-            <a href="#0" class="hide-password">Hide</a>
-            <span class="cd-error-message">Error message here!</span>
-          </p>
-
-          <p class="fieldset">
-            <input type="checkbox" id="accept-terms">
-            <label for="accept-terms">I agree to the <a href="#0">Terms</a></label>
-          </p>
-
-          <p class="fieldset">
-            <input class="full-width has-padding" type="submit" value="Create account">
-          </p>
-        </form>
-
-        <!-- <a href="#0" class="cd-close-form">Close</a> -->
-      </div> <!-- cd-signup -->
-
-      <div id="cd-reset-password"> <!-- reset password form -->
-        <p class="cd-form-message">Забыли свой пароль? Пожалуйста введите адрес вашей эл.почты и щелкните на кнопку "Сбросить пароль". Новый пароль будет выслан вам на почту.</p>
-
-        <form class="cd-form">
-          <p class="fieldset">
-            <label class="image-replace cd-email" for="reset-email">E-mail</label>
-            <input class="full-width has-padding has-border" id="reset-email" type="email" placeholder="E-mail">
-            <span class="cd-error-message">Error message here!</span>
-          </p>
-
-          <p class="fieldset">
-            <input class="full-width has-padding" type="submit" value="Сбросить пароль">
-          </p>
-        </form>
-
-        <p class="cd-form-bottom-message"><a href="#0">Вернуться назад</a></p>
-      </div> <!-- cd-reset-password -->
-      <a href="#0" class="cd-close-form">Close</a>
-    </div> <!-- cd-user-modal-container -->
-  </div> <!-- cd-user-modal -->
-  <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-  <!--[if lt IE 9]>
-    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-  <![endif]-->
 
 </body>
 </html>

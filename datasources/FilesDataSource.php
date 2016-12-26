@@ -6,7 +6,7 @@ class FilesDataSource extends BrDataSource {
 
   function __construct() {
 
-    parent::__construct('3d_files', array('defaultOrder' => array('id'=> 1)));
+    parent::__construct('3d_files', array('defaultOrder' => array('created_at'=> -1)));
 
     $this->before('select', function($dataSource, &$filter){
 
@@ -38,7 +38,10 @@ class FilesDataSource extends BrDataSource {
 
     // DML
     $this->before('insert', function($dataSource, &$row, $transientData) {
-
+        if (!br($row,'user_id')) {
+            $login = br()->auth()->getLogin();
+            $row['user_id'] = $login['id'];
+        }
     });
 
     $this->before('update', function($dataSource, &$row, $transientData, $old) {

@@ -4,8 +4,7 @@ $(document).ready(function() {
   // filesDataSource.on('error', function(operation, error) {br.growlError(error);});
   // filesDataSource.select();
 
-
-  var grid = br.dataBrowser('filesOfPerson', { noun: '' });
+  var grid = br.dataBrowser('filesOfPerson', { noun: 'ввв', selectors: { editForm: '#editForm' } });
 	grid.refresh();
 
   // filesDataSource.before('select', function(request){

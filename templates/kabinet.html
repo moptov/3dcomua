@@ -1,38 +1,71 @@
 {@head.html}
 
-<body  class="presets-preset1 main-body-light main-bg-red font-family-ximenia font-size-is-default logo-type-custom menu-type-fusionmenu layout-mode-responsive typography-style-light col12 option-com-content menu-home ">
-
 {@navigation.html}
 
   <script class="data-row-template" type="text/template">
     <tr data-rowid="{{rowid}}" >
+      <td class="optimal-width">
+        <a class="action-edit btn btn-mini btn-xs btn-default" title="Edit"><i class="icon-pencil"></i></a>
+      </td>
       <td class="optimal-width">{{fio}}</td>
       <td class="optimal-width">{{inspection}}</td>
       <td class="optimal-width">{{created_at}}</td>
       <td class="optimal-width centered"><a href="{{url}}" target="_blank" ><img src="images/download.png" alt="Скачать" /></a></td>
+  [[#login.isPower]]
+      <td class="optimal-width"><a class="action-delete btn btn-mini btn-xs btn-default" title="Удалить"><i class="icon-trash"></i></a></td>
+  [[/login.isPower]]
+
     </tr>
   </script>
 
-  <script>
-    var menuItem = 'item138';
-  </script>
+    <div class="container" style="padding-top:50px;">
 
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">КТ
+                </h1>
+            </div>
+        </div>
 
-<div id="rt-transition" class="rt-hidden">
-                                                      
-  <div id="rt-main" class="mb12">
-    <div class="rt-container">
-      <div class="rt-grid-12">
-        <div class="rt-block component-block">
-          <div class="component-content">
+  [[#login.isPower]]
 
-            <table class="simple-little-table" cellspacing='0'>
+        <div class="row">
+            <div class="col-lg-12">
+              <div class="table-responsive"> 
+                <table class="table no-border">
+                  <tbody>
+                    <tr>
+                      <td>
+                        <div class="btn-toolbar">
+                          <a  class="action-create btn btn-primary" title="Добавить"><i class="icon-plus icon-white"></i> Добавить</a>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+        </div>
+
+  [[/login.isPower]]
+
+    {@pager.html}
+
+        <!-- Features Section -->
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="table-responsive"> 
+            <table class="table browser-table table-bordered table-hover">
             <thead>
             <tr>
-            <th><strong>ФИО</strong></th>
-            <th><strong>Примечание</strong></th>
-            <th><strong>Дата</strong></th>
-            <th><strong>Скачать</strong></th>
+            <th class="optimal-width"></th>
+            <th class="optimal-width"><strong>ФИО</strong></th>
+            <th class="optimal-width"><strong>Примечание</strong></th>
+            <th class="optimal-width"><strong>Дата</strong></th>
+            <th class="optimal-width"><strong>Скачать</strong></th>
+  [[#login.isPower]]
+            <th class="optimal-width"></th>
+  [[/login.isPower]]
             </tr>
             </thead>
 
@@ -42,13 +75,72 @@
             </table>
 
           </div>
-          <div class="clear"></div>
         </div>
       </div>
-    <div class="clear"></div>
-  </div>
-</div>
-                      
-</div>
+    </div>
+
+
+
+
+    <div id="editForm" class="modal fade">
+
+        <div class="modal-dialog">
+
+            <div class="modal-content">
+
+                <div class="modal-header">
+
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+
+                    <h4 class="modal-title">Редактирование</h4>
+
+                </div>
+
+                <div class="modal-body">
+
+                  <div class="row-fluid">
+                    <div class="span12 col-md-12">
+                      <div class="form-group col-lg-12 ">
+                        <label for="code"><span class="required">*</span>ФИО</label>
+                        <input type="text" title="fio" class="required data-field form-control input-normal" name="fio" placeholder="ФИО" data-click-on-enter=".action-save">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row-fluid">
+                    <div class="span12 col-md-12">
+                      <div class="form-group col-lg-12 ">
+                        <label for="code"><span class="required">*</span>URL</label>
+                        <input type="text" title="url" class="required data-field form-control input-normal" name="url" placeholder="URL" data-click-on-enter=".action-save">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row-fluid">
+                    <div class="span12 col-md-12">
+                      <div class="form-group col-lg-12 ">
+                        <label for="code">Примечание</label>
+                        <input type="text" title="url" class="data-field form-control input-normal" name="inspection" placeholder="Примечание" data-click-on-enter=".action-save">
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+
+                <div class="modal-footer">
+
+
+                    <button type="button" class="btn btn-primary action-save">OK</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Отмена</button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+
 
 {@footer.html}

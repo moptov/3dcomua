@@ -7,8 +7,26 @@ br()
       br()->response()->redirect('home');
     })
     ->route('/kabinet', function() {
-      br()->config()->set('page-title', 'Кабинет');
-      br()->renderer()->display('kabinet.html');
+      if ($login = br()->auth()->getLogin()) {
+        br()->config()->set('page-title', 'Кабинет');
+        br()->renderer()->display('kabinet.html');
+      } else {
+        br()->config()->set('page-title', 'Вход в кабинет');
+        br()->renderer()->display('sign-up.html');
+      }
+    })
+    ->route('/users', function() {
+      if ($login = br()->auth()->getLogin()) {
+        br()->config()->set('page-title', 'Кабинет');
+        br()->renderer()->display('users.html');
+      } else {
+        br()->config()->set('page-title', 'Вход в кабинет');
+        br()->renderer()->display('sign-up.html');
+      }
+    })
+    ->route('/sign-up', function() {
+      br()->config()->set('page-title', 'Вход в кабинет');
+      br()->renderer()->display('sign-up.html');
     })
     ->route('/kontakty', function() {
       br()->config()->set('page-title', 'Адреса 3D центров');
