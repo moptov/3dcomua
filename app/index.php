@@ -6,10 +6,43 @@ br()
       br()->auth()->clearLogin();
       br()->response()->redirect('home');
     })
-    ->route('/kabinet', function() {
+    ->route('/admkontakty', function() {
       if ($login = br()->auth()->getLogin()) {
-        br()->config()->set('page-title', 'Кабинет');
-        br()->renderer()->display('kabinet.html');
+        if ($login['isSuperAdmin']) {
+          br()->config()->set('page-title', 'Настройка контактов');
+          br()->renderer()->display('admkontakty.html');
+        } else {
+          br()->config()->set('page-title', 'KT');
+          br()->renderer()->display('kabinet.html');
+        }
+      } else {
+        br()->config()->set('page-title', 'Вход в кабинет');
+        br()->renderer()->display('sign-up.html');
+      }
+    })
+    ->route('/content', function() {
+      if ($login = br()->auth()->getLogin()) {
+        if ($login['isSuperAdmin']) {
+          br()->config()->set('page-title', 'Контент сайта');
+          br()->renderer()->display('content.html');
+        } else {
+          br()->config()->set('page-title', 'KT');
+          br()->renderer()->display('kabinet.html');
+        }
+      } else {
+        br()->config()->set('page-title', 'Вход в кабинет');
+        br()->renderer()->display('sign-up.html');
+      }
+    })
+    ->route('/city', function() {
+      if ($login = br()->auth()->getLogin()) {
+        if ($login['isSuperAdmin']) {
+          br()->config()->set('page-title', 'Города');
+          br()->renderer()->display('city.html');
+        } else {
+          br()->config()->set('page-title', 'KT');
+          br()->renderer()->display('kabinet.html');
+        }
       } else {
         br()->config()->set('page-title', 'Вход в кабинет');
         br()->renderer()->display('sign-up.html');
@@ -17,12 +50,53 @@ br()
     })
     ->route('/users', function() {
       if ($login = br()->auth()->getLogin()) {
-        br()->config()->set('page-title', 'Кабинет');
-        br()->renderer()->display('users.html');
+        if ($login['isPower']) {
+          br()->config()->set('page-title', 'Пользователи');
+          br()->renderer()->display('users.html');
+        } else {
+          br()->config()->set('page-title', 'KT');
+          br()->renderer()->display('kabinet.html');
+        }
       } else {
         br()->config()->set('page-title', 'Вход в кабинет');
         br()->renderer()->display('sign-up.html');
       }
+    })
+    ->route('/kt', function() {
+      if ($login = br()->auth()->getLogin()) {
+        if ($login['isPower']) {
+          br()->config()->set('page-title', 'KT');
+          br()->renderer()->display('kt.html');
+        } else {
+          br()->config()->set('page-title', 'KT');
+          br()->renderer()->display('kabinet.html');
+        }
+      } else {
+        br()->config()->set('page-title', 'Вход в кабинет');
+        br()->renderer()->display('sign-up.html');
+      }
+    })
+    ->route('/kabinet', function() {
+      if ($login = br()->auth()->getLogin()) {
+        br()->config()->set('page-title', 'KT');
+        br()->renderer()->display('kabinet.html');
+      } else {
+        br()->config()->set('page-title', 'Вход в кабинет');
+        br()->renderer()->display('sign-up.html');
+      }
+    })
+    ->route('/profile', function() {
+      if ($login = br()->auth()->getLogin()) {
+        br()->config()->set('page-title', 'Мой профиль пользователя');
+        br()->renderer()->display('profile.html');
+      } else {
+        br()->config()->set('page-title', 'Вход в кабинет');
+        br()->renderer()->display('sign-up.html');
+      }
+    })
+    ->route('/zapis', function() {
+      br()->config()->set('page-title', 'Запись на приём');
+      br()->renderer()->display('zapis.html');
     })
     ->route('/sign-up', function() {
       br()->config()->set('page-title', 'Вход в кабинет');
@@ -95,6 +169,17 @@ br()
     ->route('/home', function() {
       br()->config()->set('page-title', '3D Center');
       br()->renderer()->display('index.html');
+    })
+    ->route('/index', function() {
+      br()->config()->set('page-title', '3D Center');
+      br()->renderer()->display('index.html');
+    })
+    ->route('/upload-image', function() {
+      require_once(__DIR__ . '/UploadImageMy.php');
+      $res = UploadImageMy::uploadFile($_FILES['upload']);
+      $callback = $_REQUEST['CKEditorFuncNum'];
+      echo '<script type="text/javascript">window.parent.CKEDITOR.tools.callFunction("'.$callback.'", "'.$res['full_path'].'", "'.$res['message'].'" );</script>';
+
     })
     ->routeIndex(function()  {
       br()->config()->set('page-title', '3D Center');

@@ -37,7 +37,7 @@
               <div class="col-lg-12">
                 <form id="login-form" style="display: block;">
                   <div class="form-group main-error text-center" style="display: none;">
-                      <p><span class="main-error-message"></span></p>
+                      <p><span class="main-error-message error-message"></span></p>
                   </div>
                   <div class="form-group">
                     <input type="email" name="email" id="email" tabindex="1" class="form-control login-field" placeholder="E-mail" value="">
@@ -45,10 +45,7 @@
                   <div class="form-group">
                     <input type="password" name="paswd" id="password" tabindex="2" class="form-control login-field" placeholder="Пароль">
                   </div>
-                  <div class="form-group text-center">
-                    <input type="checkbox" tabindex="3" class="" name="remember" id="remember">
-                    <label for="remember"> Запомнить меня</label>
-                  </div>
+
                   <div class="form-group">
                     <div class="row">
                       <div class="col-sm-6 col-sm-offset-3">
@@ -68,11 +65,14 @@
                 </form>
 
                 <form id="remember-form" role="form" style="display: none;">
+                  <div class="form-group remember-error text-center" style="display: none;">
+                      <p><span class="remember-error-message error-message"></span></p>
+                  </div>
                   <div class="form-group text-center">
                     <label> Забыли свой пароль? Пожалуйста введите адрес вашей эл.почты и щелкните на кнопку "Сбросить пароль". Новый пароль будет выслан вам на почту.</label>
                   </div>
                   <div class="form-group">
-                    <input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="E-mail" value="">
+                    <input type="email" name="email" id="remember-email" tabindex="1" class="form-control remember-field" placeholder="E-mail" value="">
                   </div>
                   <div class="form-group">
                     <div class="row">
@@ -92,41 +92,104 @@
                   </div>
                 </form>
 
-                <form id="register-form" action="http://phpoll.com/register/process" method="post" role="form" style="display: none;">
+                <form id="confirm-form" role="form" style="display: none;">
+                  <div class="form-group confirm-error text-center" style="display: none;">
+                      <p><span class="confirm-error-message error-message"></span></p>
+                  </div>
+                  <div class="form-group text-center">
+                    <label> Вам на почту был выслан код безопасности. Введите его для завершения процесса регистрации.</label>
+                  </div>
+                  <div class="form-group">
+                    <input type="hidden" name="user" class="confirm-field">
+                    <input type="text" name="code" id="confirm-email" tabindex="1" class="form-control confirm-field" placeholder="введите код безопасности" value="">
+                  </div>
+                  <div class="form-group">
+                    <div class="row">
+                      <div class="col-sm-6 col-sm-offset-3">
+                        <input type="submit" name="confirm-submit" id="confirm-submit" tabindex="4" class="form-control btn btn-register" value="Завершить регистрацию">
+                      </div>
+                    </div>
+                  </div>
+                </form>
+
+                <form id="register-form" style="display: none;">
                     <div class="form-group">
-                        <select class="form-control input-lg input-block" id="city" name="city" size="1">
-                            <option value="1">Харьков</option>
-                            <option value="2">Киев</option>
-                            <option value="3">Львов</option>
-                            <option value="4">Одесса</option>
-                            <option value="5">Полтава</option>
-                            <option value="6">Сумы</option>
+                        <select class="form-control input-lg input-block register-field" id="city" name="city_id" size="1">
                         </select>
                     </div>
 
                     <div class="form-group">
-                        <select class="form-control input-lg input-block" id="type" name="type" size="1">
-                            <option value="1">Врач</option>
-                            <option value="2">Клиника</option>
+                        <select class="form-control input-lg input-block register-field" id="type" name="is_clinic" size="1">
+                            <option value="0">Врач</option>
+                            <option value="1">Клиника</option>
                         </select>
                     </div>
 
                   <div class="form-group">
-                    <input type="text" name="username" id="username" tabindex="1" class="form-control input-normal" placeholder="ФИО" value="">
+                    <div class="form-group register-error register-error-firstname text-center" style="display: none;">
+                        <p><span class="register-error-message error-message"></span></p>
+                    </div>
+                    <input type="text" name="firstname" id="firstname" tabindex="1" class="form-control register-field" placeholder="Имя" value="">
+                  </div>
+                  <div class="form-group lastname-group">
+                    <div class="form-group register-error register-error-lastname text-center" style="display: none;">
+                        <p><span class="register-error-message error-message"></span></p>
+                    </div>
+                    <input type="text" name="lastname" id="lastname" tabindex="1" class="form-control input-normal register-field" placeholder="Фамилия" value="">
                   </div>
                   <div class="form-group">
-                    <input type="email" name="email" id="email" tabindex="1" class="form-control" placeholder="E-mail" value="">
+                    <div class="form-group register-error register-error-email text-center" style="display: none;">
+                        <p><span class="register-error-message error-message"></span></p>
+                    </div>
+                    <input type="email" name="email" id="email" tabindex="1" class="form-control register-field" placeholder="E-mail" value="">
                   </div>
 
                   <div class="form-group">
-                    <input type="text" name="phone" id="phone" tabindex="1" class="form-control" placeholder="Телефон" value="">
+                    <div class="form-group register-error register-error-phone text-center" style="display: none;">
+                        <p><span class="register-error-message error-message"></span></p>
+                    </div>
+                    <input type="text" name="phone" id="phone" tabindex="1" class="form-control register-field" placeholder="Телефон" value="">
                   </div>
 
                   <div class="form-group">
-                    <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Пароль">
+                    <div class="form-group register-error register-error-password text-center" style="display: none;">
+                        <p><span class="register-error-message error-message"></span></p>
+                    </div>
+                    <input type="password" name="password" id="password" tabindex="2" class="form-control register-field" placeholder="Пароль">
                   </div>
                   <div class="form-group">
-                    <input type="password" name="confirm-password" id="confirm-password" tabindex="2" class="form-control" placeholder="Подтверждение Пароля">
+                    <input type="password" name="confirm-password" id="confirm-password" tabindex="2" class="form-control register-field" placeholder="Подтверждение Пароля">
+                  </div>
+                  <div class="form-group">
+                    <div class="form-group register-error register-error-captcha text-center" style="display: none;">
+                        <p><span class="register-error-message error-message"></span></p>
+                    </div>
+                    <div class="row">
+                      <div class="col-lg-9">
+                        <input class="form-control register-field pull-left" name="captcha_code" type="text" placeholder="Введите код">
+                      </div>
+                      <div class="col-lg-3">
+                        <table summary="" width="100%" cellspacing="0" cellpadding="0" border="0" style="margin-top:10px;">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <img id="captcha-reg" class="capcha" data-image="3" src="images/captcha/3.gif" alt="Код проверки" width="76" height="27" border="0">
+                              </td>
+                              <td>
+                                <a onclick="">
+                                  <img id="captcha-reg-reload" src="images/reload.gif" alt="Смена картинки капчи" width="25" height="20" border="0">
+                                </a>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+
+<!--                             <img id="captcha" class="capcha pull-left" data-image="3" src="images/captcha/3.gif" alt="Код проверки" width="76" height="27" border="0" style="margin:10px;">
+                            <img class="pull-left" src="images/reload.gif" alt="Смена картинки капчи" width="25" height="20" border="0">
+ -->
+
                   </div>
                   <div class="form-group">
                     <div class="row">
@@ -146,6 +209,24 @@
 
 
  
+<div class="modal fade" id="textmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <a class="close" data-dismiss="modal">×</a>
+        <h3 class="modal-title">Регистрация прошла успешно</h3>
+      </div>
+      <div class="modal-body">
+        <p class="textpreview">Теперь вы можете войти в кабинет под своим email и паролем</p>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-sm btn-default" href="javascript:;" data-dismiss="modal"> OK </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 
     </div>
   </div>

@@ -10,7 +10,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <div class="rt-block">
-                    <a id="rt-logo" class="navbar-brand" href="index.html"></a>
+                    <a id="rt-logo" class="navbar-brand" href="index"></a>
                 </div>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -83,9 +83,11 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-lock"></span> [[^login.id]]Вход [[/login.id]][[#login.id]]Кабинет[[/login.id]] <b class="caret"></b></a>
                         <ul class="dropdown-menu" data-dropdown-in="fadeInUp" data-dropdown-out="fadeOutDown">
                           [[#login.id]]
+                            [[^login.isPower]]
                             <li>
                                 <a href="kabinet"> Таблица КТ</a>
                             </li>
+                            [[/login.isPower]]
                             [[#login.isPower]]
                             <li>
                                 <a href="users"> Таблица Пользователей</a>
@@ -95,7 +97,10 @@
                                 <a href="city"> Таблица городов</a>
                             </li>
                             <li>
-                                <a href="content"> Контент</a>
+                                <a href="admkontakty"> Контакты</a>
+                            </li>
+                            <li>
+                                <a href="content"> Контент сайта</a>
                             </li>
                               [[/login.isSuperAdmin]]
                             [[/login.isPower]]
@@ -116,6 +121,9 @@
                                 <a href="ftp://92.244.100.90/"> Вход на FTP Киев</a>
                             </li>
                         </ul>
+                    </li>
+                    <li>
+                        <a href="zapis"><span class="glyphicon glyphicon-th-list"></span> Запись на прием </a>
                     </li>
                     <li>
                         <a href="kontakty"><span class="glyphicon glyphicon-map-marker"></span> Адреса 3D центров </a>

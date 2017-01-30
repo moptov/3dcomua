@@ -6,7 +6,7 @@ class ContentDataSource extends BrDataSource {
 
   function __construct() {
 
-    parent::__construct('3d_content', array('defaultOrder' => array('id'=> 1)));
+    parent::__construct('3d_content_pages', array('defaultOrder' => array('id'=> 1)));
 
     $this->before('select', function($dataSource, &$filter){
 

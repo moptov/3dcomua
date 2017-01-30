@@ -496,3 +496,8 @@ xsigin/signup popup
 span.main-error-message {
   color: #d76666;
 }
+
+span.error-message {
+    color: #d74937;
+}
+

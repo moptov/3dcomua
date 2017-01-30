@@ -1,0 +1,124 @@
+{@head.html}
+
+{@navigation.html}
+
+
+    <div class="container" style="padding-top:50px;">
+
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Запись на приём
+                </h1>
+            </div>
+        </div>
+
+        <!-- Features Section -->
+        <div class="row">
+            <div class="col-md-12">
+
+
+<div class="container">
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+          <h3>Заполните эту форму, и наш администратор позвонит вам для уточнения и подтверждения вашей записи на прием</h3>
+          <br/>
+        </div>
+      </div>
+
+      <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <div class="panel panel-login">
+          <div class="panel-body">
+            <div class="row">
+              <div class="col-lg-12">
+
+                <form id="zap-form" >
+                    <div class="form-group">
+                      <label>Город</label>
+                      <select class="form-control input-lg input-block zap-field" id="city" name="city_id" size="1">
+                        </select>
+                    </div>
+                    <div class="form-group">
+                      <label>Адрес центра</label>
+                      <select class="form-control input-lg input-block zap-field" id="contact" name="contact_id" size="1">
+                        </select>
+                    </div>
+                  <div class="form-group">
+                    <div class="form-group zap-error zap-error-fio text-center" style="display: none;">
+                        <p><span class="zap-error-message error-message"></span></p>
+                    </div>
+                    <label>Фамилия и Имя</label>
+                    <input type="text" name="fio" id="fio" tabindex="1" class="form-control input-normal zap-field" placeholder="Фамилия и Имя" value="">
+                  </div>
+                  <div class="form-group">
+                    <div class="form-group zap-error zap-error-phone text-center" style="display: none;">
+                        <p><span class="zap-error-message error-message"></span></p>
+                    </div>
+                    <label>Контактный телефон</label>
+                    <input type="text" name="phone" id="phone" tabindex="1" class="form-control zap-field" placeholder="Телефон" value="">
+                  </div>
+                  <div class="form-group">
+                    <div class="form-group zap-error zap-error-info text-center" style="display: none;">
+                        <p><span class="zap-error-message error-message"></span></p>
+                    </div>
+                    <label>Дополнительная информация</label>
+                    <textarea class="justified zap-field" name="info" placeholder="Дополнительная информация" rows="4"></textarea>
+                  </div>
+                  <div class="form-group">
+                    <div class="form-group zap-error zap-error-captcha text-center" style="display: none;">
+                        <p><span class="zap-error-message error-message"></span></p>
+                    </div>
+                    <label>Введите проверочный код</label>
+                    <div class="row">
+                      <div class="col-lg-9">
+                        <input class="form-control zap-field pull-left" name="captcha_code" type="text" placeholder="Введите код">
+                      </div>
+                      <div class="col-lg-3">
+                        <table summary="" width="100%" cellspacing="0" cellpadding="0" border="0" style="margin-top:10px;">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <img id="captcha-reg" class="capcha" data-image="3" src="images/captcha/3.gif" alt="Код проверки" width="76" height="27" border="0">
+                              </td>
+                              <td>
+                                <a onclick="">
+                                  <img id="captcha-reg-reload" src="images/reload.gif" alt="Смена картинки капчи" width="25" height="20" border="0">
+                                </a>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+
+<!--                             <img id="captcha" class="capcha pull-left" data-image="3" src="images/captcha/3.gif" alt="Код проверки" width="76" height="27" border="0" style="margin:10px;">
+                            <img class="pull-left" src="images/reload.gif" alt="Смена картинки капчи" width="25" height="20" border="0">
+ -->
+
+                  </div>
+
+
+                  <div class="form-group">
+                    <div class="row">
+                      <div class="col-sm-6 col-sm-offset-3">
+                        <input type="submit" name="zap-submit" id="zap-submit" tabindex="4" class="form-control btn btn-register" value="Отправить заявку">
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+ 
+
+    </div>
+  </div>
+</div>
+
+{@footer.html}

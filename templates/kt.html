@@ -1,0 +1,167 @@
+{@head.html}
+
+{@navigation.html}
+
+  <script class="data-row-template" type="text/template">
+    <tr data-rowid="{{rowid}}" >
+      <td class="optimal-width">
+        <a class="action-edit btn btn-mini btn-xs btn-default" title="Edit"><i class="icon-pencil"></i></a>
+      </td>
+      <td class="optimal-width editable" data-field="fio">{{fio}}</td>
+      <td class="optimal-width editable" data-field="inspection">{{inspection}}</td>
+      <td class="optimal-width">{{created_at}}</td>
+      <td class="optimal-width centered"><a href="{{url}}" target="_blank" ><img src="images/download.png" alt="Скачать" /></a></td>
+  [[#login.isPower]]
+      <td class="optimal-width"><a class="action-delete btn btn-mini btn-xs btn-default" title="Удалить"><i class="icon-trash"></i></a></td>
+  [[/login.isPower]]
+
+    </tr>
+  </script>
+
+    <script class="data-empty-template" type="text/template">
+      <tr>
+        <td colspan="6">
+          <h2 class="centered">Нет данных</h2>
+        </td>
+      </tr>
+    </script>
+
+    <div class="container" style="padding-top:50px;">
+
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header"><a class="action-cancel" href="{/}users" title="Назад"><i class="icon-arrow-left icon-white"></i></a> <span class="span-header">КТ</span>
+                </h1>
+            </div>
+        </div>
+
+  [[#login.isPower]]
+
+        <div class="row-fluid">
+            <div class="col-lg-12">
+              <div class="table-responsive"> 
+                <table class="table no-border">
+                  <tbody>
+                    <tr>
+                      <td>
+                        <div class="btn-toolbar">
+                          <a  class="action-create btn btn-primary" title="Добавить"><i class="icon-plus icon-white"></i> Добавить</a>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+        </div>
+
+
+
+  [[/login.isPower]]
+
+
+      <div class="row-fluid filters-panel" style="display:none;">
+        <div class="col-lg-12">
+          <div class="filter-panel">
+            <div class="pull-left filter-block col-md-4">
+              <label>Поиск</label>
+              <div class="input-group">
+                <input type="text" class="input-medium form-control data-filter" title="Поиск по" placeholder="ФИО или примечание" name="keyword" data-click-on-enter=".action-refresh" />
+                <span class="input-group-btn">
+                  <button class="btn btn-default action-refresh" type="button"><i class="icon-search"></i></button>
+                  <button class="btn btn-default action-clear-one-filter" rel="keyword" type="button"><i class="icon-remove"></i></button>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    {@pager.html}
+
+        <!-- Features Section -->
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="table-responsive"> 
+            <table class="table browser-table table-bordered table-hover">
+            <thead>
+            <tr>
+            <th class="optimal-width"></th>
+            <th class="optimal-width"><strong>ФИО</strong></th>
+            <th class="optimal-width"><strong>Примечание</strong></th>
+            <th class="optimal-width"><strong>Дата</strong></th>
+            <th class="optimal-width"><strong>Скачать</strong></th>
+  [[#login.isPower]]
+            <th class="optimal-width"></th>
+  [[/login.isPower]]
+            </tr>
+            </thead>
+
+            <tbody class="data-table">
+            </tbody>
+
+            </table>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+    <div id="editForm" class="modal fade">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title">Редактирование</h4>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <div class="span12 col-md-12">
+                <div class="form-group col-lg-12 ">
+                  <label for="code"><span class="required">*</span>ФИО</label>
+                  <input type="text" title="ФИО" class="required data-field form-control input-normal" name="fio" placeholder="ФИО" data-click-on-enter=".action-save">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="span12 col-md-12">
+                <div class="form-group col-lg-12 ">
+                  <label for="code"><span class="required">*</span>URL</label>
+                  <input type="text" title="URL" class="required data-field form-control input-normal" name="url" placeholder="URL" data-click-on-enter=".action-save">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="span12 col-md-12">
+                <div class="form-group col-lg-12 ">
+                  <label for="code">Примечание</label>
+                  <input type="text" title="Примечание" class="data-field form-control input-normal" name="inspection" placeholder="Примечание" data-click-on-enter=".action-save">
+                </div>
+                <div class="form-group col-lg-12">
+                  <label class="checkbox" style="margin-left:20px;">
+                  <input class="data-field" name="mail" value="1" type="checkbox">
+                  Отправить письмо
+                  </label>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary action-save">OK</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Отмена</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+{@footer.html}

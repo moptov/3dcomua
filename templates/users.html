@@ -4,21 +4,41 @@
 
   <script class="data-row-template" type="text/template">
     <tr data-rowid="{{rowid}}" >
-  [[#login.isPower2]]
+  [[#login.isPower]]
       <td class="optimal-width">
-        <a class="action-edit btn btn-mini btn-xs btn-default" title="Edit"><i class="icon-pencil"></i></a>
+        <a class="action-edit btn btn-mini btn-xs btn-default" title="Редактирование"><i class="icon-pencil"></i></a>
       </td>
-  [[/login.isPower2]]
-      <td class="optimal-width">{{name}}</td>
-      <td class="optimal-width">{{email}}</td>
-      <td class="optimal-width">{{phone}}</td>
+      <td class="optimal-width">
+        <a class="action-file-open btn btn-mini btn-xs btn-default" title="Файлы пользователя" href="{/}kt?rowid={{rowid}}"><i class="icon-file"></i></a>
+      </td>
+  [[/login.isPower]]   
+    {{#if flag.is_clinic}}
+      <td colspan="2" class="optimal-width editable" data-field="firstname">{{firstname}}</td>
+    {{else}}
+      <td class="optimal-width editable" data-field="firstname">{{firstname}}</td>
+      <td class="optimal-width editable" data-field="lastname">{{lastname}}</td>
+    {{/if}}
+
+      <td class="optimal-width editable" data-field="phone">{{phone}}</td>
+      <td class="optimal-width editable" data-field="email">{{email}}</td>
+      <td class="optimal-width" data-field="email"><input type="checkbox" [[#login.isSuperAdmin]]class="action-switch-option" [[/login.isSuperAdmin]] data-field="status" [[^login.isSuperAdmin]]disabled="disabled" [[/login.isSuperAdmin]] {{#if flag.status}}checked="checked"{{/if}}/></td>
+      <td class="optimal-width">{{type}}</td>
       <td class="optimal-width">{{city}}</td>
+      <td class="optimal-width">{{last_login}}</td>
   [[#login.isSuperAdmin]]
       <td class="optimal-width"><a class="action-delete btn btn-mini btn-xs btn-default" title="Удалить"><i class="icon-trash"></i></a></td>
   [[/login.isSuperAdmin]]
 
     </tr>
   </script>
+
+    <script class="data-empty-template" type="text/template">
+      <tr>
+        <td colspan="10">
+          <h2 class="centered">Нет данных</h2>
+        </td>
+      </tr>
+    </script>
 
     <div class="container" style="padding-top:50px;">
 
@@ -29,9 +49,9 @@
             </div>
         </div>
 
-  [[#login.isPower2]]
+  [[#login.isPower]]
 
-        <div class="row">
+        <div class="row-fluid">
             <div class="col-lg-12">
               <div class="table-responsive"> 
                 <table class="table no-border">
@@ -49,7 +69,50 @@
             </div>
         </div>
 
-  [[/login.isPower2]]
+
+
+  [[/login.isPower]]
+
+      <div class="row-fluid filters-panel">
+        <div class="span12 col-md-12">
+          <div class="filter-panel">
+            <div class="pull-left filter-block col-md-4">
+              <label>Поиск</label>
+              <div class="input-group">
+                <input type="text" class="input-medium form-control data-filter" title="Поиск по" placeholder="ФИО, телефон или email" name="keyword" data-click-on-enter=".action-refresh" />
+                <span class="input-group-btn">
+                  <button class="btn btn-default action-refresh" type="button"><i class="icon-search"></i></button>
+                  <button class="btn btn-default action-clear-one-filter" rel="keyword" type="button"><i class="icon-remove"></i></button>
+                </span>
+              </div>
+            </div>
+            <div class="pull-left filter-block col-md-2">
+              <label>Город</label>
+              <select class="input-large form-control data-filter" title="Город" name="city_id"></select>
+            </div>
+            <div class="pull-left filter-block col-md-2">
+              <label>Врач / Клиника</label>
+              <select class="input-large form-control data-filter" title="Врач / Клиника" name="type_person">
+                <option value="all">Все</option>
+                <option value="doctors">Врачи</option>
+                <option value="clinik">Клиники</option>
+              </select>
+            </div>
+            <div class="pull-left filter-block col-md-2">
+              <label>Тип</label>
+              <select class="input-large form-control data-filter" title="Тип" name="type_id"></select>
+            </div>
+            <div class="pull-left filter-block col-md-2">
+              <label>Статус</label>
+              <select class="input-medium form-control data-filter" title="Scope" name="scope">
+                <option value="all">Все</option>
+                <option value="active">Активные</option>
+                <option value="inactive">Не активные</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
 
 
     {@pager.html}
@@ -61,13 +124,17 @@
             <table class="table browser-table table-bordered table-hover">
             <thead>
             <tr>
-  [[#login.isPower2]]
+  [[#login.isPower]]
             <th class="optimal-width"></th>
-  [[/login.isPower2]]
-            <th class="optimal-width"><strong>ФИО</strong></th>
-            <th class="optimal-width"><strong>E-mail</strong></th>
-            <th class="optimal-width"><strong>Телефон</strong></th>
+            <th class="optimal-width"></th>
+  [[/login.isPower]]
+            <th colspan="2" class="optimal-width"><strong>ФИО/Название Клиники</strong>  <i class="sortable icon-sort-by-alphabet order-asc" data-field="firstname"></i> <i class="sortable icon-sort-by-alphabet-alt order-desc" data-field="firstname"></i></th>
+            <th class="optimal-width"><strong>Телефон</strong>  <i class="sortable icon-sort-by-alphabet order-asc" data-field="phone"></i> <i class="sortable icon-sort-by-alphabet-alt order-desc" data-field="phone"></i></th>
+            <th class="optimal-width"><strong>E-mail</strong>  <i class="sortable icon-sort-by-alphabet order-asc" data-field="email"></i> <i class="sortable icon-sort-by-alphabet-alt order-desc" data-field="email"></i></th>
+            <th class="optimal-width">Статус</th>
+            <th class="optimal-width">Тип</th>
             <th class="optimal-width"><strong>Город</strong></th>
+            <th class="optimal-width">Логин</th>
   [[#login.isSuperAdmin]]
             <th class="optimal-width"></th>
   [[/login.isSuperAdmin]]
@@ -82,6 +149,9 @@
           </div>
         </div>
       </div>
+
+    {@pager.html}
+      
     </div>
 
 
@@ -103,27 +173,102 @@
 
                 <div class="modal-body">
 
-                  <div class="row-fluid">
+                  <div class="row">
                     <div class="span12 col-md-12">
                       <div class="form-group col-lg-12 ">
-                        <label for="code"><span class="required">*</span>ФИО</label>
-                        <input type="text" title="fio" class="required data-field form-control input-normal" name="fio" placeholder="ФИО" data-click-on-enter=".action-save">
+                        <label class="control-label">Город</label>
+                        <select name="city_id" title="Город"  class="input-medium form-control data-field" data-click-on-enter=".action-save">
+                        </select>
                       </div>
                     </div>
                   </div>
-                  <div class="row-fluid">
+                  <div class="row">
                     <div class="span12 col-md-12">
                       <div class="form-group col-lg-12 ">
-                        <label for="code"><span class="required">*</span>URL</label>
-                        <input type="text" title="url" class="required data-field form-control input-normal" name="url" placeholder="URL" data-click-on-enter=".action-save">
+                      [[#login.isSuperAdmin]]
+                        <label class="control-label">Тип</label>
+                        <select name="type_id" title="Тип"  class="input-medium form-control data-field" data-click-on-enter=".action-save">
+                        </select>
+                      [[/login.isSuperAdmin]]
+                      [[^login.isSuperAdmin]]
+                        <label class="control-label user-type"></label>
+                      [[/login.isSuperAdmin]]
                       </div>
                     </div>
                   </div>
-                  <div class="row-fluid">
+                  [[#login.isSuperAdmin]]
+                  <div class="row adres-centra">
                     <div class="span12 col-md-12">
                       <div class="form-group col-lg-12 ">
-                        <label for="code">Примечание</label>
-                        <input type="text" title="url" class="data-field form-control input-normal" name="inspection" placeholder="Примечание" data-click-on-enter=".action-save">
+                        <label class="control-label">Адрес центра</label>
+                        <select name="contact_id" title="Адрес центра"  class="input-medium form-control data-field" data-click-on-enter=".action-save">
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  [[/login.isSuperAdmin]]
+                  <div class="row">
+                    <div class="span12 col-md-12">
+                      <div class="form-group col-lg-12 ">
+                        <label class="control-label">Врач / Клиника</label>
+                        <select name="is_clinic" title="Врач / Клиника"  class="input-medium form-control data-field" data-click-on-enter=".action-save">
+                          <option value="0">Врач</option>
+                          <option value="1">Клиника</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="imia span12 col-md-12">
+                      <div class="form-group col-lg-12 ">
+                        <label for="firstname"><span class="required">*</span><span class="firstname_name">Имя</span></label>
+                        <input type="text" title="Имя" class="required data-field form-control input-normal" name="firstname" placeholder="Имя" data-click-on-enter=".action-save">
+                      </div>
+                    </div>
+                    <div class="span6 col-md-6 fam">
+                      <div class="form-group col-lg-12">
+                        <label for="lastname"><span class="required">*</span>Фамилия</label>
+                        <input type="text" title="Фамилия" class="data-field form-control input-normal" name="lastname" placeholder="Фамилия" data-click-on-enter=".action-save">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="span6 col-md-6">
+                      <div class="form-group col-lg-12">
+                        <label for="phone">Телефон</label>
+                        <input type="text" title="Телефон" class="data-field form-control input-normal" name="phone" placeholder="Телефон" data-click-on-enter=".action-save">
+                      </div>
+                    </div>
+                    <div class="span6 col-md-6">
+                      <div class="form-group col-lg-12">
+                        <label for="email"><span class="required">*</span>E-mail</label>
+                        <input type="text" title="E-mail" class="required data-field form-control input-normal" name="email" placeholder="E-mail" data-click-on-enter=".action-save">
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="span6 col-md-6">
+                      <div class="form-group col-lg-12">
+                        <label for="pass">Пароль</label>
+                        <input type="password" title="Пароль" class="data-field form-control input-normal" name="pass" placeholder="Пароль" data-click-on-enter=".action-save">
+                      </div>
+                    </div>
+                    <div class="span6 col-md-6">
+                      <div class="form-group col-lg-12">
+                        <label for="pass2">Повторить пароль</label>
+                        <input type="password" title="Повторить пароль" class="data-field form-control input-normal" name="pass2" placeholder="Пароль" data-click-on-enter=".action-save">
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="span12 col-md-12">
+                      <div class="form-group col-lg-12">
+                        <label class="checkbox" style="margin-left:20px;">
+                        <input class="data-field" name="status" value="1" type="checkbox" [[^login.isSuperAdmin]]disabled="disabled" [[/login.isSuperAdmin]]>
+                        Активный
+                        </label>
                       </div>
                     </div>
                   </div>

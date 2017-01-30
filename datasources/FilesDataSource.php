@@ -10,6 +10,8 @@ class FilesDataSource extends BrDataSource {
 
     $this->before('select', function($dataSource, &$filter){
 
+      if (!br($filter,'id')) {
+
         if ($login = br()->auth()->getLogin()) {
           if (br($login,'isPower')) {
             if (!br($filter,'user_id')) {
@@ -29,6 +31,8 @@ class FilesDataSource extends BrDataSource {
                 $filter['user_id'] = $login['id'];
             }
         }
+      }
+
 
     });
 
@@ -37,12 +41,35 @@ class FilesDataSource extends BrDataSource {
     });
 
     // DML
-    $this->before('insert', function($dataSource, &$row, $transientData) {
+    $this->before('insert', function($dataSource, &$row, &$transientData) {
         if (!br($row,'user_id')) {
             $login = br()->auth()->getLogin();
             $row['user_id'] = $login['id'];
         }
     });
+
+    $this->before('insert,update', function($dataSource, &$row, &$transientData) {
+      if (br($row,'mail')) {
+        $transientData['mail'] = 1;
+      }
+      unset($row['mail']);
+    });
+
+    $this->after('insert,update', function($dataSource, $row, &$transientData) {
+      if (br($transientData,'mail')) {
+        if ($userIndo = br()->db()->getRow('SELECT * FROM 3d_users WHERE id = ?',$row['user_id'])) {
+            $userIndo['pacientInfo'] = $row;
+            $userIndo['name'] = $userIndo['firstname'].' '.$userIndo['lastname'];
+            $message = br()->renderer()->fetch('new-study-mail.html', array('data' => $userIndo));
+            br()->sendMail( $userIndo['email']
+                          , 'Новое исследование'
+                          , $message
+                          );
+        }
+      }
+    });
+
+
 
     $this->before('update', function($dataSource, &$row, $transientData, $old) {
 
@@ -65,9 +92,11 @@ class FilesDataSource extends BrDataSource {
     });
 
     // commands
-    $this->on('someCommand', function($dataSource, $params) {
+    $this->on('getPersonName', function($dataSource, $params) {
 
-      throw new Exception('Not implemented');
+      if (br($params,'id')) {
+        return br()->db()->getValue( 'SELECT IF(is_clinic = 1,firstname,CONCAT(firstname," ",lastname)) FROM 3d_users WHERE id = ?',$params['id']);
+      }
 
     });
 

@@ -1,0 +1,84 @@
+{@head.html}
+
+{@navigation.html}
+
+  <div id="mainContainer" class="container container-box" style="padding-top:50px;">
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Мой профиль пользователя 
+            </h1>
+        </div>
+    </div>
+
+    <form class="form-horizontal" onsubmit="return false;">
+      <fieldset>
+
+
+
+    <div class="row">
+      <div class="span6 col-md-6 imia">
+        <div class="form-group col-lg-12 ">
+          <label for="firstname"><span class="required">*</span><span class="firstname_name">Имя</span></label>
+          <input type="text" title="Имя" class="required data-field form-control input-normal" name="firstname" placeholder="Имя" data-click-on-enter=".action-save">
+        </div>
+      </div>
+      <div class="span6 col-md-6 fam">
+        <div class="form-group col-lg-12">
+          <label for="lastname"><span class="required">*</span>Фамилия</label>
+          <input type="text" title="Фамилия" class="required data-field form-control input-normal" name="lastname" placeholder="Фамилия" data-click-on-enter=".action-save">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="span6 col-md-6">
+        <div class="form-group col-lg-12">
+          <label for="phone">Телефон</label>
+          <input type="text" title="Телефон" class="data-field form-control input-normal" name="phone" placeholder="Телефон" data-click-on-enter=".action-save">
+        </div>
+      </div>
+      <div class="span6 col-md-6">
+        <div class="form-group col-lg-12">
+          <label for="email"><span class="required">*</span>E-mail</label>
+          <input type="text" title="E-mail" class="required data-field form-control input-normal" name="email" placeholder="E-mail" data-click-on-enter=".action-save">
+        </div>
+      </div>
+    </div>
+
+    <br/>
+
+    <div id="changePasswordBlock" >
+      <legend><small>Воспользуетесь этим разделом, если вы хотите сменить пароль</small></legend>
+      <div class="row">
+        <div class="span6 col-md-6">
+          <div class="form-group col-lg-12">
+            <label for="pass">Новый пароль</label>
+            <input type="password" title="Пароль" class="data-field form-control input-normal" name="pass" placeholder="Пароль" data-click-on-enter=".action-save">
+          </div>
+        </div>
+        <div class="span6 col-md-6">
+          <div class="form-group col-lg-12">
+            <label for="pass2">Повторить пароль</label>
+            <input type="password" title="Повторить пароль" class="data-field form-control input-normal" name="pass2" placeholder="Пароль" data-click-on-enter=".action-save">
+          </div>
+        </div>
+      </div>
+    </div>
+
+      </fieldset>
+    </form>
+
+    <legend style="margin-top:10px;"></legend>
+
+    <div class="row">
+      <div class="span12 col-md-12">
+        <a class="action-save btn btn-primary pull-right" title="Сохранить изменения">Сохранить изменения</a>
+      </div>
+    </div>
+
+  </div>
+
+
+
+
+{@footer.html}
