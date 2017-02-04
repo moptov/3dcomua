@@ -1,3 +1,115 @@
 body {
   padding-top:60px;
 }
+.block-primary {
+   position: relative;
+   content: "";
+   clear: both;
+}
+.block-holder {
+    background: url(../images/bg-showcase.jpg);
+	width: 100%;
+    border-radius: 5px;
+    overflow: hidden;
+    position: relative;
+    content: "";
+    clear: both;
+}
+.block-holder-bg {
+	overflow: hidden;
+    border-radius: 5px;
+    background: none;
+    position: absolute;
+    top: 15px;
+    left: 25px;
+    right: 25px;
+    bottom: 15px;
+    -webkit-box-shadow: inset 0px 0px 101px 11px rgba(0,0,0,0.71);
+    -moz-box-shadow: inset 0px 0px 101px 11px rgba(0,0,0,0.71);
+    box-shadow: inset 0px 0px 101px 11px rgba(0,0,0,0.71);
+}
+.desc-holder {
+    width: 53%;
+    display: inline-block;   
+    float: left;
+    padding: 40px 0 40px 70px;
+}
+.title {
+    font-size: 25px;
+    text-align: center;
+    color: #fff;
+}
+.desc {
+    position: relative;
+    content: "";
+    clear: both;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 100;
+    margin: 30px 0 0 0;
+    padding: 15px 30px;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0px 0px 300px 6px rgba(0,0,0,0.44);
+    -moz-box-shadow: inset 0px 0px 300px 6px rgba(0,0,0,0.44);
+    box-shadow: inset 0px 0px 300px 6px rgba(0,0,0,0.44);
+}
+.desc:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 50%;
+    width: 0;
+    height: 0;
+    /*border-style: solid;*/
+    border-width: 10px 7px 0 7px;
+    border-color: #fff  transparent transparent transparent;
+    opacity: 0.3;
+}
+.image-holder {
+    width: 47%;
+    vertical-align: top;
+    display: inline-block;
+    float: right;
+}
+.image {
+	padding: 15px 25px 10px 0;
+}
+
+@media all and (max-width: 991px) {
+.image {
+    padding: 93px 30px 10px 0;
+}
+.navbar-right {
+    margin-right: none;
+}
+.nav > li > a {
+    position: relative;
+    display: block;
+    padding: 3px 8px;
+}
+}
+@media all and (max-width: 768px) {
+    .image {
+    height: auto;
+    padding: 102px 40px 10px 0;
+}
+.navbar-toggle {
+    margin-top: 35px;
+}
+}
+@media all and (max-width: 700px) {
+   .image {
+    display: none;
+} 
+    .desc-holder {
+    width: 100%;
+    padding: 40px;
+}
+}
+
+
+a.bff {
+    font-size: 2.1em;
+    text-decoration: underline;
+    font-weight: bold;
+}
